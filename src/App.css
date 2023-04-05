@@ -1,0 +1,9 @@
+.app-container {
+    display: flex;
+  }
+  body {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs2.best-wallpaper.net%2Fwallpaper%2F2560x1600%2F1802%2FBooks-coffee-pen_2560x1600.jpg&f=1&nofb=1&ipt=c820dfa68e9fc41ae7f0d63c2c20c7bbe48236810246d6c85c258df0da9f02f1&ipo=images');
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  
+}

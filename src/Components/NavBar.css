@@ -1,0 +1,31 @@
+@media (max-width: 576px) {
+    .offcanvas {
+      width: 80%;
+    }
+  }
+  
+  .offcanvas-header {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  .offcanvas-body {
+    background-color: #f8f9fa;
+  }
+  
+  .offcanvas-body .nav-link {
+    color: #212529;
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+  }
+  
+  .nav-link:hover {
+    color: #007bff;
+  }
+  
+  .offcanvas-body .nav-link:hover {
+    color: #007bff;
+  }
+  

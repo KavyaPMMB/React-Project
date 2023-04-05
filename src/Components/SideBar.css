@@ -1,0 +1,58 @@
+
+.sidebar {
+  height: 100%;
+  margin-right: 20px;
+  /* background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2Fl7h0vqwmdvd11.jpg&f=1&nofb=1&ipt=9b60618fcf76de54ce615f35f343b0fba2cb4e829d53e2642972b02e4c3a495e&ipo=images'); */
+  color: white;
+  /* filter: blur(10px); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+.sidebar::before {
+  content: '';
+  position: absolute;
+  background-size: contain;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpayanname-man.ir%2Fwp-content%2Fuploads%2F2021%2F01%2Feach_own_quality_study_hour_books_abstract_hd-wallpaper-1797898.jpg&f=1&nofb=1&ipt=f502890549cda70b3a89e320b55b3a17d131271b58b000981bb7626ef996e580&ipo=images');
+  filter: blur(1px);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Styles for the sidebar on small screens */
+@media only screen and (max-width: 768px) {
+  .sidebar {
+  
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    z-index: 999;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .sidebar.active {
+    height: 100%;
+  }
+
+  .sidebar-header {
+    padding: 5px;
+  }
+
+  .client-table-container {
+    width: 100%;
+    margin-left: 0;
+  }
+}
