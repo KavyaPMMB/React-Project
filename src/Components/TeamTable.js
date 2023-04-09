@@ -1,16 +1,21 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, Table } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
 import SideBar from './SideBar'
 import { HiEye } from 'react-icons/hi'
 import { FaTrashAlt, FaUserEdit } from 'react-icons/fa'
+import ReactPaginate from 'react-paginate'
 
 function TeamTable() {
     const [Team, setTeam] = useState([])
     const [showModal, setShowModal] = useState(false);
   const [deleteId, setDeleteId] = useState("");
     const {_id}=useParams()
+    const [PageNumber, setPageNumber] = useState(0)
+    const perpage=5;
+    const pageclick=PageNumber*perpage;
+    const countpage=Math.ceil(Team.length/perpage);
     const history=useNavigate()
     useEffect(() => {
     axios.get('http://localhost:4000/getteam').then((team)=>{
@@ -43,13 +48,16 @@ function TeamTable() {
         console.log(`Edit member with ID ${_id}`);
     }
 
-    
+    const changepage=({selected})=>{
+      setPageNumber(selected);
+  
+     }
   return (
     <div style={{ display: "flex" }}>
       <SideBar style={{ position: "fixed" }}/>
       <div className="container" style={{ overflow: "auto" ,width:"auto"}}>
-      <div className="d-flex justify-content-end mb-3">
-      <table className="table table-bordered table-hover mt-5 table-responsive">
+      <div className="d-flex justify-content-end mb-3"></div>
+      <Table className="table table-bordered table-hover mt-5 table-responsive">
         <thead>
           <tr class="table-dark">
             <th>Name</th>
@@ -64,8 +72,10 @@ function TeamTable() {
             </tr>
         </thead>
         <tbody class="table-dark">
-          {Team.map((data) => (
-            <tr key={data._id}>
+          {/* {Team.map((data) => (
+            <tr key={data._id}> */}
+            {Team.slice(pageclick,pageclick+perpage).map((data,index)=>(
+              <tr key={index}>
               <td>{data.Name}</td>
               <td>{data.Email}</td>
               <td>{data.DateOfBirth}</td>
@@ -97,7 +107,18 @@ function TeamTable() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
+      <ReactPaginate
+  previousLabel={"<<"} 
+  nextLabel={">>"}
+  pageCount={countpage}
+  onPageChange={changepage}
+  containerClassName={"pagination justify-content-center paginationBttns"}
+  previousLinkClassName={"previousBttn"}
+  nextLinkClassName={"nextBttn"}
+  activeClassName={"paginationActive"}
+  disabledClassName={"paginationDisabled "}
+/> 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Delete Client</Modal.Title>
@@ -114,7 +135,7 @@ function TeamTable() {
       </Modal> 
     </div>
     </div>
-    </div>
+    
   )
 }
 

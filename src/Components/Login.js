@@ -86,7 +86,7 @@ function Login() {
               <Form.Label style={{ color: "white" }}>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="email"
                 value={Email}
                 onChange={(event) => setemail(event.target.value)}
                 required

@@ -6,12 +6,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "./SideBar";
 import "./ClientTable.css"
 import SideBar from "./SideBar";
+import ReactPaginate from "react-paginate";
 
 function CustomerTable({}) {
   const [customers, setcustomers] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [deleteId, setDeleteId] = useState("");
   const { _id } = useParams();
+  const [PageNumber, setPageNumber] = useState(0)
+  const perpage=5;
+  const pageclick=PageNumber*perpage;
+  const countpage=Math.ceil(customers.length/perpage);
   const history = useNavigate();
   useEffect(() => {
     axios
@@ -46,6 +51,10 @@ function CustomerTable({}) {
     history(`/EditCustomer.js/${_id}`);
     console.log(`Edit customer with ID ${_id}`);
   };
+  const changepage=({selected})=>{
+    setPageNumber(selected);
+
+   }
 
   
 
@@ -54,7 +63,7 @@ function CustomerTable({}) {
       
       <SideBar style={{ position: "fixed" }}/>
       <div className="container" style={{ overflow: "auto" ,width:"auto"}}>
-      <div className="d-flex justify-content-end mb-3">
+      <div className="d-flex justify-content-end mb-3"></div>
           
         <Table className='table table-bordered table-hover mt-5 table-responsive' style={{}}>
           <thead>
@@ -71,8 +80,10 @@ function CustomerTable({}) {
             </tr>
           </thead>
           <tbody class="table-dark">
-            {customers.map((data) => (
-              <tr key={data._id}>
+            {/* {customers.map((data) => (
+              <tr key={data._id}> */}
+              {customers.slice(pageclick,pageclick+perpage).map((data,index)=>(
+              <tr key={index}>
                 <td>{data.Name}</td>
                 <td>{data.Email}</td>
                 <td>{data.Address}</td>
@@ -104,6 +115,17 @@ function CustomerTable({}) {
             ))}
           </tbody>
         </Table>
+        <ReactPaginate
+  previousLabel={"<<"} 
+  nextLabel={">>"}
+  pageCount={countpage}
+  onPageChange={changepage}
+  containerClassName={"pagination justify-content-center paginationBttns"}
+  previousLinkClassName={"previousBttn"}
+  nextLinkClassName={"nextBttn"}
+  activeClassName={"paginationActive"}
+  disabledClassName={"paginationDisabled "}
+/> 
         <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Delete Customer</Modal.Title>
@@ -120,7 +142,7 @@ function CustomerTable({}) {
       </Modal>
       </div>
     </div>
-    </div>
+    
   );
 }
 

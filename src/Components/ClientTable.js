@@ -4,8 +4,9 @@ import { HiEye } from "react-icons/hi";
 import "./ClientTable.css";
 import { FaTrashAlt, FaUserEdit } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Table } from "react-bootstrap";
 import SideBar from "./SideBar";
+import ReactPaginate from "react-paginate";
 
 function ClientTable() {
   const [client, setclient] = useState([]);
@@ -13,6 +14,10 @@ function ClientTable() {
   const [deleteId, setDeleteId] = useState("");
   const history = useNavigate();
   const { _id } = useParams();
+  const [PageNumber, setPageNumber] = useState(0)
+    const perpage=5;
+    const pageclick=PageNumber*perpage;
+    const countpage=Math.ceil(client.length/perpage);
   useEffect(() => {
     axios
       .get("http://localhost:4000/getclient")
@@ -47,12 +52,17 @@ function ClientTable() {
     console.log(`Edit  client with ID ${_id}`);
   };
 
+  const changepage=({selected})=>{
+    setPageNumber(selected);
+
+   }
+
   return (
     <div style={{ display: "flex" }}>
       <SideBar style={{ position: "fixed" }}/>
       <div className="container" style={{ overflow: "auto" ,width:"auto"}}>
-      <div className="d-flex justify-content-end mb-3">
-      <table className="table table-bordered table-hover mt-5 table-responsive">
+      <div className="d-flex justify-content-end mb-3"></div>
+      <Table className="table table-bordered table-hover mt-5 table-responsive">
         <thead>
           <tr class="table-dark">
             <th>Name</th>
@@ -65,8 +75,10 @@ function ClientTable() {
           </tr>
         </thead>
         <tbody class="table-dark">
-          {client.map((data) => (
-            <tr key={data._id}>
+          {/* {client.map((data) => ( */}
+            {/* <tr key={data._id}> */}
+            {client.slice(pageclick,pageclick+perpage).map((data,index)=>(
+              <tr key={index}>
               <td>{data.Name}</td>
               <td>{data.UserName}</td>
               <td>{data.Email}</td>
@@ -94,7 +106,18 @@ function ClientTable() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
+      <ReactPaginate
+  previousLabel={"<<"} 
+  nextLabel={">>"}
+  pageCount={countpage}
+  onPageChange={changepage}
+  containerClassName={"pagination justify-content-center paginationBttns"}
+  previousLinkClassName={"previousBttn"}
+  nextLinkClassName={"nextBttn"}
+  activeClassName={"paginationActive"}
+  disabledClassName={"paginationDisabled "}
+/> 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Delete Client</Modal.Title>
@@ -111,7 +134,7 @@ function ClientTable() {
       </Modal>
     </div>
     </div>
-    </div>
+    
   );
 }
 

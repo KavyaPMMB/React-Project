@@ -52,4 +52,54 @@ Styles for the container div
     margin-right: auto;
     overflow: auto;
   }
+
+  .paginationBttns {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .paginationBttns li {
+    margin: 0 10px;
+  }
+  
+  .paginationBttns li a {
+    display: block;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .paginationBttns li a:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .paginationActive a {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+  }
+  
+  .previousBttn, .nextBttn {
+    display: block;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .previousBttn:hover, .nextBttn:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .paginationDisabled a {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
   

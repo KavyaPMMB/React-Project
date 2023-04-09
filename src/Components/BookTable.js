@@ -126,8 +126,8 @@ function BookTable({}) {
           </tbody>
         </Table>
         <ReactPaginate
-  previousLabel={"Previous"} 
-  nextLabel={"Next"}
+  previousLabel={"<<"} 
+  nextLabel={">>"}
   pageCount={countpage}
   onPageChange={changepage}
   containerClassName={"pagination justify-content-center paginationBttns"}

@@ -1,15 +1,16 @@
-
 .sidebar {
   height: 100vh;
+  border: 2px solid rgb(235, 235, 238);
+  border-top-right-radius:10% ;
+  border-bottom-left-radius:10% ;
   width: 18%;
   margin-right: 20px;
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2Fl7h0vqwmdvd11.jpg&f=1&nofb=1&ipt=9b60618fcf76de54ce615f35f343b0fba2cb4e829d53e2642972b02e4c3a495e&ipo=images');
-  color: white;
-  /* filter: blur(10px); */
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.freecreatives.com%2Fwp-content%2Fuploads%2F2016%2F02%2FFree-Blue-Black-Full-HD-Background.jpg&f=1&nofb=1&ipt=5622ffcb770aa4e8e97b84d47966ea8f41e80740c19d962f1a487ec2dfa1b662&ipo=images');
+  color: rgb(22, 6, 6);
   background-size: cover;
   background-repeat: no-repeat;
   object-fit: cover;
-  transition: transform 0.3s ease-in-out;
+  
 }
 .sidebar::before {
   content: '';
@@ -20,7 +21,7 @@
   right: 0;
   bottom: 0;
   z-index: -1;
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpayanname-man.ir%2Fwp-content%2Fuploads%2F2021%2F01%2Feach_own_quality_study_hour_books_abstract_hd-wallpaper-1797898.jpg&f=1&nofb=1&ipt=f502890549cda70b3a89e320b55b3a17d131271b58b000981bb7626ef996e580&ipo=images');
+  background-image: url('');
   filter: blur(1px);
 }
 
