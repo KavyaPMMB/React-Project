@@ -1,8 +1,9 @@
 
 .sidebar {
-  height: 100%;
+  height: 100vh;
+  width: 18%;
   margin-right: 20px;
-  /* background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2Fl7h0vqwmdvd11.jpg&f=1&nofb=1&ipt=9b60618fcf76de54ce615f35f343b0fba2cb4e829d53e2642972b02e4c3a495e&ipo=images'); */
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2Fl7h0vqwmdvd11.jpg&f=1&nofb=1&ipt=9b60618fcf76de54ce615f35f343b0fba2cb4e829d53e2642972b02e4c3a495e&ipo=images');
   color: white;
   /* filter: blur(10px); */
   background-size: cover;

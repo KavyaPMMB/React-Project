@@ -45,6 +45,9 @@ function AddClient()
       })
       .catch((err) => console.log(err));
   };
+  const handleClose = () => {
+    history(`/ClientTable.js`)
+  };
 
   return (
     <div style={{display:"flex"}}>
@@ -147,7 +150,13 @@ function AddClient()
               type="submit"
               className="btn-lg btn-block  mt-4" onClick={handleSubmit}>
           Submit
-        </Button>
+        </Button>{" "}
+        <Button
+              variant="danger"
+              type="submit"
+              className="btn-lg btn-block  mt-4"
+              onClick={handleClose}
+            >Cancel</Button>
       </Form>
       </Card.Body>
       </Card>

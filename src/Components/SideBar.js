@@ -20,14 +20,14 @@ function SideBar() {
         <Nav.Link href="/BookTable.js" style={{color:"white",fontWeight:"900",fontSize:"20px"}}>Books</Nav.Link>
         <Nav.Link href="/AddBookForm.js"style={{color:"white",fontWeight:"700",fontSize:"15px"}}>Add Book</Nav.Link>
         <h1>_________________</h1>
-        <h4>_________________</h4>
         <Nav.Link href="/ClientTable.js"style={{color:"white",fontWeight:"900",fontSize:"20px"}}>Clients</Nav.Link>
         <Nav.Link href="/AddClient.js"style={{color:"white",fontWeight:"700",fontSize:"15px"}}>Add Clients</Nav.Link>
         <h1>_________________</h1>
-        <h2>_________________</h2>
         <Nav.Link href="/CustomerTable.js"style={{color:"white",fontWeight:"900",fontSize:"20px"}}>Customers</Nav.Link>
         <Nav.Link href="/AddCustomer.js"style={{color:"white",fontWeight:"700",fontSize:"15px"}}>Add Customer</Nav.Link>
         <h5>_________________</h5>
+        <Nav.Link href="/TeamTable.js"style={{color:"white",fontWeight:"900",fontSize:"20px"}}>Team Members</Nav.Link>
+        <Nav.Link href="/AddTeam.js"style={{color:"white",fontWeight:"700",fontSize:"15px"}}>Add Team Members</Nav.Link>
       </Nav>
     </div>
   );

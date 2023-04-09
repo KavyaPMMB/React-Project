@@ -5,49 +5,44 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./EditBookForm.css";
 import swal from "sweetalert";
 
-function EditClientForm() {
-  const [clientData, setClientData] = useState([]);
+function EditTeam() {
+  const [teamData, setTeamData] = useState([]);
   const { _id } = useParams();
   const history = useNavigate();
   useEffect(() => {
-    axios.post(`http://localhost:4000/defaultclientform/${_id}`).then((res) => {
-      setClientData(res.data);
+    axios.post(`http://localhost:4000/default/${_id}`).then((res) => {
+      setTeamData(res.data);
     });
   }, []);
-  console.log(clientData);
+  console.log(teamData);
 
-  const [Name, setClientName] = useState(clientData.Name);
-  const [UserName, setUserName] = useState(clientData.UserName);
-  const [Email, setEmail] = useState(
-    clientData.Email
-  );
-  const [SignedStatus, setSignedStatus] = useState(clientData.SignedStatus);
-  const [Role, setRole] = useState(clientData.Role);
-  const [PhoneNumber, setPhoneNumber] = useState(clientData.PhoneNumber);
+  const [Name, setName] = useState(teamData.Name)
+    const [Email, setEmail] = useState(teamData.Email)
+    const [DateOfBirth, setDateOfBirth] = useState(teamData.DateOfBirth)
+    const [Gender, setGender] = useState(teamData.Gender)
+    const [Description, setDescription] = useState(teamData.Description)
+    const [Role, setRole] = useState(teamData.Role)
+    const [PhoneNumber, setPhoneNumber] = useState(teamData.PhoneNumber)
+    const [ProfilePicture, setProfilePicture] = useState(teamData.ProfilePicture)
 
  
 
   function handleSubmit() {
     axios
-      .put(`http://localhost:4000/updateclient/${_id}`, {
-        Name,
-        UserName,
-        Email,
-        SignedStatus,
-        Role,
-        PhoneNumber,
+      .put(`http://localhost:4000/updateteam/${_id}`, {
+        Name,Email,DateOfBirth,Gender,Description,Role,PhoneNumber,ProfilePicture
       })
       .then((res) => {
-        console.log(`Client with ID ${_id} updated`);
+        console.log(`team with ID ${_id} updated`);
       });
-    history("/ClientTable.js");
+    history("/TeamTable.js");
     swal({
-      title: "The client details has been updated successfully!",
+      title: "The team details has been updated successfully!",
       icon: "success",
     });
   }
   const handleClose = () => {
-    history(`/ClientTable.js`)
+    history(`/TeamTable.js`)
   };
 
   return (
@@ -65,86 +60,97 @@ function EditClientForm() {
               <Form.Label style={{ color: "white" }}>Name</Form.Label>
               <Form.Control
                 type="text"
-                Value={clientData.Name}
+                Value={teamData.Name}
                 onChange={(e) => {
-                  setClientName(e.target.value);
+                  setName(e.target.value);
                 }}
               />
             </Form.Group>
 
             <Form.Group controlId="formBasicusername">
-              <Form.Label style={{ color: "white" }}>User Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="UserName"
-                Value={clientData.UserName}
-                onChange={(e) => {
-                  setUserName(e.target.value);
-                }}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label style={{ color: "white" }}>
-                Email
-              </Form.Label>
+              <Form.Label style={{ color: "white" }}>Email</Form.Label>
               <Form.Control
                 type="email"
-                name="Email"
-                Value={clientData.Email}
+                name="email"
+                Value={teamData.Email}
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicSignedstatus">
-  <Form.Label style={{ color: "white" }}>Signed Status</Form.Label>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label style={{ color: "white" }}>
+                Date Of Birth
+              </Form.Label>
+              <Form.Control
+                type="date"
+                name="dob"
+                Value={teamData.DateOfBirth}
+                onChange={(e) => {
+                  setDateOfBirth(e.target.value);
+                }}
+              />
+              </Form.Group>
+
+              <Form.Group controlId="formgender">
+  <Form.Label style={{ color: "white" }}>Gender</Form.Label>
   <div>
     <Form.Check
       inline
-      label="Sign In"
+      label="male"
       type="radio"
       name="radio"
       id="true"
       value='true'
   
-      defaultChecked={clientData.SignedStatus}
+      defaultChecked={teamData.Gender}
       onChange={(e) => {
-        setSignedStatus(e.target.value);
+        setGender(e.target.value);
       }}
     />
     <Form.Check
       inline
-      label="Not Sign In"
+      label="female"
       type="radio"
       name="radio"
-      id="not-sign-in"
+      id="female"
       value='false'
-      defaultChecked={!clientData.SignedStatus}
+      defaultChecked={teamData.Gender}
       onChange={(e) => {
-        setSignedStatus(e.target.value);
+        setGender(e.target.value);
       }}
     />
   </div>
 </Form.Group>
 
-
+        
 <Form.Group controlId="formBasicrole">
   <Form.Label style={{ color: "white" }}>Role</Form.Label>
   <Form.Control as="select" onChange={(e) => setRole(e.target.value)}>
   <option value=''>Select  a Role</option>
-    <option selected={clientData.Role === 'Super Admin'} value="Super Admin">Super Admin</option>
-    <option selected={clientData.Role === 'Only By Admin'} value="Only By Admin">Only By Admin</option>
+    <option selected={teamData.Role =='Super Admin'} value="Super Admin">Super Admin</option>
+    <option selected={teamData.Role == 'Only By Admin'} value="Only By Admin">Only By Admin</option>
   </Form.Control>
 </Form.Group>
+
+<Form.Group controlId="formBasicName">
+              <Form.Label style={{ color: "white" }}>Description</Form.Label>
+              <Form.Control
+                type="text"
+                Value={teamData.Description}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+              />
+            </Form.Group>
 
                <Form.Group controlId="formBasicnumber">
               <Form.Label style={{ color: "white" }}>PhoneNumber</Form.Label>
               <Form.Control
                 type="number"
                 name="phonenumber"
-                Value={clientData.PhoneNumber}
+                Value={teamData.PhoneNumber}
                 onChange={(e) => {
                   setPhoneNumber(e.target.value);
                 }}
@@ -168,4 +174,4 @@ function EditClientForm() {
     </div>
   );
 }
-export default EditClientForm;
+export default EditTeam;

@@ -51,13 +51,18 @@ function SignUp() {
        const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
       };
+      const handleClose = () => {
+        history(`/`)
+      };
+    
     
   return (
-    <section className="vh-100" style={{backgroundImage:"url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs2.best-wallpaper.net%2Fwallpaper%2F2560x1600%2F1802%2FBooks-coffee-pen_2560x1600.jpg&f=1&nofb=1&ipt=c820dfa68e9fc41ae7f0d63c2c20c7bbe48236810246d6c85c258df0da9f02f1&ipo=images')",backgroundSize:"cover"}}>
-         <Card className="border-secondary mx-auto mt-5" style={{ maxWidth: '500px',backgroundColor: '#f8f9fa'}}>
+    <section className="vh-100" style={{backgroundImage:"url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F07%2FAmazing-Laptop-Wallpapers-Free-Download.jpg&f=1&nofb=1&ipt=e65b693839eb0c8351c0014d146c3fc1a77822b24bc6036eba628975f8a3d0af&ipo=images')",backgroundSize:"cover"}}>
+         <Card className=" card border  mx-auto mt-1" style={{backgroundImage:
+          "url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwonderfulengineering.com%2Fwp-content%2Fuploads%2F2016%2F01%2Fblack-wallpaper-23.jpg&f=1&nofb=1&ipt=57ba4646c5f479442d5247242bab05a9ecddd5d841cf4074d779007bb57797fe&ipo=images')", backgroundSize: "contain"}}>
          <Card.Body className="d-flex flex-column align-items-left">
          <div className="text-center mb-4">
-        <h1 className="card-title">Sign Up</h1>
+        <h3 style={{ fontFamily: "Roboto" }} className="card-title">Sign Up</h3>
         <p className="" style={{color:"white"}}>Please enter your credentials</p>
       </div>
         
@@ -122,9 +127,7 @@ function SignUp() {
 </Form.Group>
 
 
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Remember me" />
-            </Form.Group>
+            
 
             <Button
               variant="light"
@@ -133,6 +136,14 @@ function SignUp() {
               onClick={handleSubmit}
                   >
               SignUp
+            </Button>{" "}
+            <Button
+              variant="danger"
+              type="submit"
+              className="btn-lg btn-block  mt-4"
+              onClick={handleClose}
+            >
+              Cancel
             </Button>
           </Form>
         </Card.Body>

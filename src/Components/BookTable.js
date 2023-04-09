@@ -7,6 +7,8 @@ import Sidebar from "./SideBar";
 import "./ClientTable.css"
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+  import ReactPaginate from 'react-paginate'
+  import { Pagination } from 'react-bootstrap';
   
 
 function BookTable({}) {
@@ -15,6 +17,11 @@ function BookTable({}) {
   const [deleteId, setDeleteId] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const { _id } = useParams();
+  const [PageNumber, setPageNumber] = useState(0)
+    const perpage=5;
+    const pageclick=PageNumber*perpage;
+    const countpage=Math.ceil(books.length/perpage);
+
   const history = useNavigate();
   useEffect(() => {
     axios
@@ -56,6 +63,11 @@ function BookTable({}) {
   const filteredBooks = books.filter((book) =>
     book.BookName.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const changepage=({selected})=>{
+    setPageNumber(selected);
+
+   }
   
 
   return (
@@ -82,8 +94,9 @@ function BookTable({}) {
             </tr>
           </thead>
           <tbody class="table-dark">
-          {filteredBooks.map((book) => (
-              <tr key={book._id}>
+          {/* {filteredBooks.map((book) => ( */}
+          {filteredBooks.slice(pageclick,pageclick+perpage).map((book,index)=>(
+              <tr key={index}>
                 <td>{book.BookName}</td>
                 <td>{book.Author}</td>
                 <td>{book.PublicationsName}</td>
@@ -112,6 +125,19 @@ function BookTable({}) {
             ))}
           </tbody>
         </Table>
+        <ReactPaginate
+  previousLabel={"Previous"} 
+  nextLabel={"Next"}
+  pageCount={countpage}
+  onPageChange={changepage}
+  containerClassName={"pagination justify-content-center paginationBttns"}
+  previousLinkClassName={"previousBttn"}
+  nextLinkClassName={"nextBttn"}
+  activeClassName={"paginationActive"}
+  disabledClassName={"paginationDisabled "}
+/> 
+
+
         <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Delete Client</Modal.Title>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Card} from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -33,19 +33,15 @@ function Login() {
     console.log(display.data);
     localStorage.setItem("userinfo", JSON.stringify(display.data));
     if (display.data.Token) {
-    
       swal({
         title: "Login Successful..!",
         icon: "success",
       });
       history("/SideBar.js");
-      
-    }
-    else
-    {
+    } else {
       swal({
         title: "Login failed...",
-        text:"Please check your credentials and try again",
+        text: "Please check your credentials and try again",
         icon: "error",
       });
     }
@@ -55,20 +51,33 @@ function Login() {
     setShowPassword((prevState) => !prevState);
   };
 
+  const handleClose = () => {
+    history(`/`);
+  };
+
   return (
     <section
       className="vh-100"
       style={{
         backgroundImage:
-          "url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs2.best-wallpaper.net%2Fwallpaper%2F2560x1600%2F1802%2FBooks-coffee-pen_2560x1600.jpg&f=1&nofb=1&ipt=c820dfa68e9fc41ae7f0d63c2c20c7bbe48236810246d6c85c258df0da9f02f1&ipo=images')",
+          "url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F07%2FAmazing-Laptop-Wallpapers-Free-Download.jpg&f=1&nofb=1&ipt=e65b693839eb0c8351c0014d146c3fc1a77822b24bc6036eba628975f8a3d0af&ipo=images')",
         backgroundSize: "cover",
       }}
     >
-      <Card className="card border-secondary mx-auto mt-5 ">
+      <Card
+        className="card border  mx-auto mt-1 "
+        style={{
+          backgroundImage:
+            "url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwonderfulengineering.com%2Fwp-content%2Fuploads%2F2016%2F01%2Fblack-wallpaper-23.jpg&f=1&nofb=1&ipt=57ba4646c5f479442d5247242bab05a9ecddd5d841cf4074d779007bb57797fe&ipo=images')",
+          backgroundSize: "contain",
+        }}
+      >
         <Card.Body className="d-flex flex-column align-items-center">
           <div className="text-center mb-4">
-            <h1 className="card-title">Login</h1>
-            <p className="" style={{ color: "white" }}>
+            <h3 style={{ fontFamily: "Roboto" }} className="card-title">
+              Login
+            </h3>
+            <p style={{ fontFamily: "Raleway", color: "white" }} className="">
               Please enter your credentials
             </p>
           </div>
@@ -90,41 +99,50 @@ function Login() {
                 Please enter a valid email address.
               </Form.Control.Feedback>
             </Form.Group>
-
             <Form.Group controlId="formPassword">
-  <Form.Label style={{ color: "white" }}>Password</Form.Label>
-  <div className="input-group">
-    <Form.Control
-      type={showPassword ? "text" : "password"}
-      placeholder="Password"
-      value={Password}
-      onChange={(event) => setpassword(event.target.value)}
-      className="form-control-lg  border-0 shadow-sm px-4"
-    />
-    <button
-      type="button"
-      className="btn btn-outline-secondary"
-      onClick={togglePasswordVisibility}
-    >
-      {showPassword ? <FaEye className="bi bi-eye-slash-fill"/> : <FaEyeSlash className="bi bi-eye-fill"/>}
-    </button>
-    <Form.Control.Feedback
-      type="invalid"
-      className="invalid-feedback"
-    >
-      Password must be at least 8 characters long.
-    </Form.Control.Feedback>
-  </div>
-</Form.Group>
-
-
+              <Form.Label style={{ color: "white" }}>Password</Form.Label>
+              <div className="input-group">
+                <Form.Control
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  value={Password}
+                  onChange={(event) => setpassword(event.target.value)}
+                  className="form-control-lg  border-0 shadow-sm px-4"
+                />
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? (
+                    <FaEye className="bi bi-eye-slash-fill" />
+                  ) : (
+                    <FaEyeSlash className="bi bi-eye-fill" />
+                  )}
+                </button>
+                <Form.Control.Feedback
+                  type="invalid"
+                  className="invalid-feedback"
+                >
+                  Password must be at least 8 characters long.
+                </Form.Control.Feedback>
+              </div>
+            </Form.Group>
             <Button
-              variant="light"
+              variant="success"
               type="submit"
               className="btn-lg btn-block  mt-4"
               onClick={handleSubmit}
             >
               Login
+            </Button>{" "}
+            <Button
+              variant="danger"
+              type="submit"
+              className="btn-lg btn-block  mt-4"
+              onClick={handleClose}
+            >
+              Cancel
             </Button>
           </Form>
         </Card.Body>

@@ -2,8 +2,9 @@
     display: flex;
   }
   body {
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs2.best-wallpaper.net%2Fwallpaper%2F2560x1600%2F1802%2FBooks-coffee-pen_2560x1600.jpg&f=1&nofb=1&ipt=c820dfa68e9fc41ae7f0d63c2c20c7bbe48236810246d6c85c258df0da9f02f1&ipo=images');
+  /* background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F07%2FAmazing-Laptop-Wallpapers-Free-Download.jpg&f=1&nofb=1&ipt=e65b693839eb0c8351c0014d146c3fc1a77822b24bc6036eba628975f8a3d0af&ipo=images'); */
   background-size: cover;
+  background-color: black;
   /* background-repeat: no-repeat; */
   
 }

@@ -19,6 +19,11 @@ import ViewCustomer from './Components/ViewCustomer';
 import EditCustomer from './Components/EditCustomer';
 import { ToastContainer } from 'react-bootstrap';
 import 'react-toastify/dist/ReactToastify.css';
+import TeamTable from './Components/TeamTable';
+import AddTeam from './Components/AddTeam';
+import ViewTeam from './Components/ViewTeam';
+import EditTeam from './Components/EditTeam';
+import Slide from './Components/Slide';
 
 
 function App() {
@@ -38,23 +43,32 @@ theme="light"
 />
       <BrowserRouter>
       <Routes>
-      <Route path="/" element={<NavBar/>}/>
+      <Route path="/" element={<><NavBar/><Slide/></>}/>
       <Route path="/Login.js" element={<><NavBar/><Login/></>}/>
       <Route path="/SignUp.jsx" element={<><NavBar/><SignUp/></>}/>
       <Route path="/BookTable.js" element={<><BookTable /></>}/>
       <Route path="/AddBookForm.js" element={<><AddBookForm/></>}/>
       <Route path="/SideBar.js" element={<><SideBar/></>}/>
+     
       <Route path="/ViewBook.js/:_id" element={<><ViewBook/></>}/>
       <Route path="/ViewClient.js/:_id" element={<><ViewClient/></>}/>
       <Route path="/ViewCustomer.js/:_id" element={<><ViewCustomer/></>}/>
+      <Route path="/ViewTeam.js/:_id" element={<><ViewTeam/></>}/>
+
 
       <Route path="/EditBookForm.js/:_id" element={<><EditBookForm/></>}/>
       <Route path="/EditClientForm.js/:_id" element={<><EditClientForm/></>}/>
       <Route path="/EditCustomer.js/:_id" element={<><EditCustomer/></>}/>
+      <Route path="/EditTeam.js/:_id" element={<><EditTeam/></>}/>
+
 
       <Route path="/AddClient.js" element={<><AddClient/></>}/>
+      <Route path="/AddTeam.js" element={<><AddTeam/></>}/>
+
       <Route path="/CustomerTable.js" element={<CustomerTable/>}/>
       <Route path="/ClientTable.js" element={<ClientTable/>}/>
+      <Route path="/TeamTable.js" element={<TeamTable/>}/>
+
 
               
       <Route path='/AddCustomer.js' element={<AddCustomer/>}/>
@@ -64,7 +78,7 @@ theme="light"
       </Routes>
       </BrowserRouter>
   
-      <ToastContainer/>
+      
       
     </div>
   );

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "./SideBar";
 import swal from 'sweetalert'
 
-function AddBookForm({ onAddBook }) {
+function AddBookForm() {
   const [books, setBooks] = useState([]);
   const [BookName, setBookName] = useState("");
   const [Author, setAuthor] = useState("");
@@ -41,6 +41,10 @@ function AddBookForm({ onAddBook }) {
       })
       .catch((err) => console.log(err));
   };
+  const handleClose = () => {
+    history(`/BookTable.js`)
+  };
+
 
   return (
     <div style={{display:"flex"}}>
@@ -114,7 +118,13 @@ function AddBookForm({ onAddBook }) {
               type="submit"
               className="btn-lg btn-block  mt-4" onClick={handleSubmit}>
           Submit
-        </Button>
+        </Button>{" "}
+        <Button
+              variant="danger"
+              type="submit"
+              className="btn-lg btn-block  mt-4"
+              onClick={handleClose}
+            >Cancel</Button>
       </Form>
       </Card.Body>
       </Card>

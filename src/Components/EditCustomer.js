@@ -44,6 +44,10 @@ function EditCustomer() {
         icon: "success",
       });
   }
+  
+  const handleClose = () => {
+    history(`/Customerable.js`)
+  };
 
   return (
     <div>
@@ -152,7 +156,12 @@ function EditCustomer() {
               onClick={handleSubmit}
             >
               Update
-            </Button>
+            </Button>{" "}
+            <Button
+             className="btn-lg btn-block rounded-pill mt-4"
+             variant="light"
+              onClick={handleClose}
+            >Cancel</Button>
           </Form>
         </Card.Body>
       </Card>
