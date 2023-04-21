@@ -71,7 +71,7 @@ function TeamTable() {
             <th>Actions</th>
             </tr>
         </thead>
-        <tbody class="table-dark">
+        <tbody class="table-light">
           {/* {Team.map((data) => (
             <tr key={data._id}> */}
             {Team.slice(pageclick,pageclick+perpage).map((data,index)=>(
@@ -95,7 +95,7 @@ function TeamTable() {
                   style={{
                     cursor: "pointer",
                     marginRight: "18px",
-                    color: "pink",
+                    color: "black",
                   }}
                   onClick={() => handleEdit(data._id)}
                 />{" "}

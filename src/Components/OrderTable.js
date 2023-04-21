@@ -8,8 +8,8 @@ import { Button, Modal, Table } from "react-bootstrap";
 import SideBar from "./SideBar";
 import ReactPaginate from "react-paginate";
 
-function ClientTable() {
-  const [client, setclient] = useState([]);
+function OrderTable() {
+  const [order, setorder] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [deleteId, setDeleteId] = useState("");
   const history = useNavigate();
@@ -17,12 +17,12 @@ function ClientTable() {
   const [PageNumber, setPageNumber] = useState(0)
     const perpage=5;
     const pageclick=PageNumber*perpage;
-    const countpage=Math.ceil(client.length/perpage);
+    const countpage=Math.ceil(order.length/perpage);
   useEffect(() => {
     axios
-      .get("http://localhost:4000/getclient")
+      .get("http://localhost:4000/getorder")
       .then((res) => {
-        setclient(res.data);
+        setorder(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -32,24 +32,24 @@ function ClientTable() {
     setShowModal(true);
   };
 
-  const deleteClient = () => {
+  const deleteOrder = () => {
     axios
-      .delete(`http://localhost:4000/deleteclient/${deleteId}`)
+      .delete(`http://localhost:4000/deleteorder/${deleteId}`)
       .then((res) => {
-        setclient(client.filter((del) => del._id !== deleteId));
-        console.log(`Client with ID ${deleteId} deleted`);
+        setorder(order.filter((del) => del._id !== deleteId));
+        console.log(`order with ID ${deleteId} deleted`);
         setShowModal(false);
       });
   };
 
-  const handleView = (_id) => {
-    history(`/ViewClient.js/${_id}`);
-    console.log(`View client with ID ${_id}`);
-  };
+//   const handleView = (_id) => {
+//     history(`/ViewClient.js/${_id}`);
+//     console.log(`View client with ID ${_id}`);
+//   };
 
   const handleEdit = (_id) => {
-    history(`/EditClientForm.js/${_id}`);
-    console.log(`Edit  client with ID ${_id}`);
+    history(`/EditOrder.js/${_id}`);
+    console.log(`Edit  order with ID ${_id}`);
   };
 
   const changepage=({selected})=>{
@@ -65,31 +65,29 @@ function ClientTable() {
       <Table className="table table-bordered table-hover mt-5 table-responsive">
         <thead>
           <tr class="table-dark">
-            <th>Name</th>
-            <th>User Name</th>
-            <th>Email</th>
-            <th>Signed Status</th>
-            <th>Role</th>
-            <th>Phone Number</th>
+            <th>Product Id</th>
+            <th> First Name</th>
+            <th>Last Name</th>
+            <th>Product Number</th>
+            <th>Date</th>
             <th>Actions</th>
+           
           </tr>
         </thead>
         <tbody class="table-light">
-          {/* {client.map((data) => ( */}
-            {/* <tr key={data._id}> */}
-            {client.slice(pageclick,pageclick+perpage).map((data,index)=>(
+    
+            {order.slice(pageclick,pageclick+perpage).map((data,index)=>(
               <tr key={index}>
-              <td>{data.Name}</td>
-              <td>{data.UserName}</td>
-              <td>{data.Email}</td>
-              <td>{data.SignedStatus ? "Sign In" : "Not Sign In"}</td>
-              <td>{data.Role}</td>
-              <td>{data.PhoneNumber}</td>
+                <td>{data._id}</td>
+              <td>{data.FirstName}</td>
+              <td>{data.LastName}</td>
+              <td>{data.ProductNumber}</td>
+               <td>{data.Date}</td>
               <td>
-                <HiEye
+                {/* <HiEye
                   style={{ cursor: "pointer", marginRight: "18px" }}
                   onClick={() => handleView(data._id)}
-                />{" "}
+                />{" "} */}
                 <FaUserEdit
                   style={{
                     cursor: "pointer",
@@ -120,14 +118,14 @@ function ClientTable() {
 /> 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Delete Client</Modal.Title>
+          <Modal.Title>Delete Order</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this client?</Modal.Body>
+        <Modal.Body>Are you sure you want to delete this Order?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Cancel
           </Button>
-          <Button variant="danger" onClick={deleteClient}>
+          <Button variant="danger" onClick={deleteOrder}>
             Delete
           </Button>
         </Modal.Footer>
@@ -138,4 +136,4 @@ function ClientTable() {
   );
 }
 
-export default ClientTable;
+export default OrderTable;

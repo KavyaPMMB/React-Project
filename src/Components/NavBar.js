@@ -19,9 +19,13 @@ function NavBar() {
            
           </Nav>
           <Nav>
-            <Nav.Link href="/SignUp.jsx"><h5>Sign Up</h5></Nav.Link>
+          <NavDropdown title="User Login" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/SignUp.jsx">Sign Up</NavDropdown.Item>
+                <NavDropdown.Item href="/UserLogin.js">Log In</NavDropdown.Item>
+              </NavDropdown>
+            {/* <Nav.Link href="/SignUp.jsx"><h5>User Login </h5></Nav.Link> */}
             <Nav.Link eventKey={2} href="/Login.js">
-            <h5>Log In</h5>
+            <h5>Admin</h5>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

@@ -46,7 +46,7 @@ function EditCustomer() {
   }
   
   const handleClose = () => {
-    history(`/Customerable.js`)
+    history(`/CustomerTable.js`)
   };
 
   return (

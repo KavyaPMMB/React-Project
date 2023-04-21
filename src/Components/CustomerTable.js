@@ -79,7 +79,7 @@ function CustomerTable({}) {
 
             </tr>
           </thead>
-          <tbody class="table-dark">
+          <tbody class="table-light">
             {/* {customers.map((data) => (
               <tr key={data._id}> */}
               {customers.slice(pageclick,pageclick+perpage).map((data,index)=>(
@@ -101,7 +101,7 @@ function CustomerTable({}) {
                   <FaEdit
                     style={{
                       cursor: "pointer",
-                      color: "yellow",
+                      color: "black",
                       marginRight: "18px",
                     }}
                     onClick={() => handleEdit(data._id)}

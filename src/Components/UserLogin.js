@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import swal from "sweetalert";
 
-function Login() {
+function UserLogin() {
   const [Email, setemail] = useState("");
   const [Password, setpassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -37,7 +37,7 @@ function Login() {
         title: "Login Successful..!",
         icon: "success",
       });
-      history("/SideBar.js");
+      history("/UserHome.js");
     } else {
       swal({
         title: "Login failed...",
@@ -164,4 +164,4 @@ theme="dark"
   );
 }
 
-export default Login;
+export default UserLogin;

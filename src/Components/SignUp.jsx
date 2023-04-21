@@ -46,7 +46,7 @@ function SignUp() {
             text:"Please log in to access your account",
             icon: "success",
           });
-          history('/Login.js')
+          history('/UserLogin.js')
        };
        const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);

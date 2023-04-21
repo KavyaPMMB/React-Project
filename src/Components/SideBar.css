@@ -2,7 +2,7 @@
   height: 100vh;
   border: 2px solid rgb(235, 235, 238);
   border-top-right-radius:10% ;
-  border-bottom-left-radius:10% ;
+  border-bottom-left-radius:5% ;
   width: 18%;
   margin-right: 20px;
   background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.freecreatives.com%2Fwp-content%2Fuploads%2F2016%2F02%2FFree-Blue-Black-Full-HD-Background.jpg&f=1&nofb=1&ipt=5622ffcb770aa4e8e97b84d47966ea8f41e80740c19d962f1a487ec2dfa1b662&ipo=images');
@@ -12,8 +12,24 @@
   object-fit: cover;
   
 }
+.sidebar-text {
+  color: white;
+  font-weight: 900;
+  font-size: 20px;
+  margin-left: 10px;
+}
+#h1
+{
+  color: blanchedalmond;
+}
+.sidebar-icon 
+{
+color: rgb(72, 210, 90);
+font-size: 25px;
+}
+
 .sidebar::before {
-  content: '';
+  
   position: absolute;
   background-size: contain;
   top: 0;
@@ -21,7 +37,6 @@
   right: 0;
   bottom: 0;
   z-index: -1;
-  background-image: url('');
   filter: blur(1px);
 }
 
@@ -39,7 +54,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 0;
+    height: auto;
     overflow: hidden;
     z-index: 999;
     transition: all 0.3s ease-in-out;

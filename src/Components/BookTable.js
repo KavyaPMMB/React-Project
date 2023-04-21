@@ -82,7 +82,7 @@ function BookTable({}) {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           </div>
-        <Table className='table table-bordered table-hover mt-5 table-responsive' style={{}}>
+        <Table className='table table-bordered justify-content-end table-hover mt-5 table-responsive' style={{}}>
           <thead>
             <tr class="table-dark">
               <th>Book Name   </th>
@@ -93,7 +93,7 @@ function BookTable({}) {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody class="table-dark">
+          <tbody class="table-light">
           {/* {filteredBooks.map((book) => ( */}
           {filteredBooks.slice(pageclick,pageclick+perpage).map((book,index)=>(
               <tr key={index}>
@@ -111,7 +111,7 @@ function BookTable({}) {
                   <FaEdit
                     style={{
                       cursor: "pointer",
-                      color: "yellow",
+                      color: "black",
                       marginRight: "18px",
                     }}
                     onClick={() => handleEdit(book._id)}
